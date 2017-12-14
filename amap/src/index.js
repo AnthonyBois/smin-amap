@@ -3,25 +3,28 @@ import { render } from 'react-dom';
 import {
   BrowserRouter as Router,
   Route,
-} from 'react-router-dom';
+  Switch
+} from 'react-router-dom'
 
-import StorePicker from './components/StorePicker';
-import App from './App';
 import './css/style.css';
+import App from './components/App';
+import StorePicker from './components/StorePicker';
+import NotFound from './components/NotFound';
 
-<Router>
-    <div>
-      <Route path="/" component={StorePicker}/>
-      <Route path="/store" component={App}/>
-    </div>
-</Router>
-  
-const NoMatch = ({ location }) => (
-  <div>
-    <h3>No match for <code>{location.pathname}</code></h3>
-  </div>
-)
+const Root = () => {
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/" component={StorePicker} />
+        <Route path="/store/:storeId" component={App} />
 
+         {/* La <Route> qui suit n'a pas de "path", donc elle va
+         toujours matcher. Cela veut dire que NotFound va
+         s'afficher quand aucun des autre <Route>s ne match l'url actuelle. */}
+        <Route component={NotFound} />
+      </Switch>
+    </Router>
+  )
+}
 
-render(<App />, document.querySelector('#main'));
-render(<StorePicker />, document.querySelector('#main'));
+render(<Root/>, document.querySelector('#main'));

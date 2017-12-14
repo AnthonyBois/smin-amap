@@ -3,10 +3,10 @@ import React from 'react';
 class Order extends React.Component{
     render(){
         return (
-
-                    <h2>Order</h2>
-               
-            )
+            <div>
+                <h1>Order</h1>
+            </div>
+        )
     }
 }
 
