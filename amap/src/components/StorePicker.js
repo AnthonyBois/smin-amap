@@ -9,15 +9,15 @@ class StorePicker extends React.Component{
     }
     
      goToStore(event) {
-        event.preventDefault();
-        console.log("Tu as changé l'URL");
-        // On récupère le texte entré dans le formulaire
-        const storeId = this.storeInput.value;
-        console.log(`On va vers ${storeId}`);
-        // Ensuite on va se déplacer de / vers /store/:storeId
-        console.log(this);
-        this.props.history.push(`store/${storeId}`);
-    }
+    event.preventDefault();
+    console.log("Tu as changé l'URL");
+    // On récupère le texte entré dans le formulaire
+    const storeId = this.storeInput.value;
+    console.log(`On va vers ${storeId}`);
+    // Ensuite on va se déplacer de / vers /store/:storeId
+    console.log(this);
+    this.props.history.push(`store/${storeId}`);
+}
     
     render(){
         return (
