@@ -40,14 +40,21 @@ class App extends React.Component {
         }
         if (orders[key].name == order.name && orders[key].nombreProduits >= orders[key].nombreProduitDispo){
           order.nombreProduits = orders[key].nombreProduits
-        order.prixFinal = (orders[key].price * (orders[key].nombreProduits))
+          order.prixFinal = (orders[key].price * (orders[key].nombreProduits))
         }
         
 
     })
     orders[order.name] = order
     this.setState({ orders })
-    var test = {orders}
+    var veggie = {orders}
+    localStorage.setItem('orders', JSON.stringify(veggie));
+  }
+  
+  componentWillMount(){
+      this.setState({
+        orders: JSON.parse(localStorage.getItem('orders')).orders
+      })
   }
 
 

@@ -38,6 +38,7 @@ class Order extends React.Component {
 	    orders[order.name] = order
         this.setState({ orders })
         var veggie = {orders}
+        localStorage.setItem('orders', JSON.stringify(veggie));
   	}
 
   	render() {
