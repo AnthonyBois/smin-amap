@@ -1,6 +1,7 @@
 import React from 'react';
 import { getFunName } from '../helpers'
 import PropTypes from 'prop-types'
+import { Button } from 'reactstrap';
 
 class StorePicker extends React.Component{
     constructor(){
@@ -24,7 +25,7 @@ class StorePicker extends React.Component{
             <form className="store-selector" onSubmit={(e) => this.goToStore(e)}>
                 <h2>Entrez un nom de magasin</h2>
                 <input type="text" ref={(input) => {this.storeInput = input}} required placeholder="Nom du magasin" defaultValue={getFunName()}/>
-                <button type="submit">Visiter le magasin </button>
+                <Button color="info" type="submit">Visiter le magasin </Button>
             </form>
         )
     }

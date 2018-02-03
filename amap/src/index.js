@@ -10,6 +10,7 @@ import './css/style.css';
 import App from './components/App';
 import StorePicker from './components/StorePicker';
 import NotFound from './components/NotFound';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const Root = () => {
   return (

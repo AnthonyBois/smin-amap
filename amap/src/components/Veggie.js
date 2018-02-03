@@ -1,5 +1,6 @@
 import React from 'react';
 import { formatPrice } from '../helpers.js';
+import { Button, Card, CardBody} from 'reactstrap';
 
 class Veggie extends React.Component {
 
@@ -21,7 +22,7 @@ class Veggie extends React.Component {
   	var ajoutPanier = []
   	if (this.props.details.status === "available"){
   		ajoutPanier.push(
-  			<button onClick={() => this.createOrder()} key={ajoutPanier + this.props.details.name}>Ajouter au caddie</button>
+  		  <Button color="info" onClick={() => this.createOrder()} key={ajoutPanier + this.props.details.name}>Ajouter au caddie</Button>
   			)
   		var quantite = <p className="total">Stock: {this.props.details.nombreProduitDispo} kg</p>
   	} 
@@ -32,16 +33,18 @@ class Veggie extends React.Component {
   	}
   	
     return (
-      <li className="menu-veggie">
-        <img src={details.image} alt={details.name} />
-        <h3 className="veggie-name"> 
-            {details.name}
-            <span className="price">{formatPrice(details.price)}/kg</span>
-        </h3>
-        <p>{details.desc}</p>
-        {quantite}
-      	{ajoutPanier}
-      </li>
+      <Card className="menu-veggie">
+        <CardBody>
+          <img src={details.image} alt={details.name} />
+          <h3 className="veggie-name"> 
+              {details.name}
+              <span className="price">{formatPrice(details.price)}/kg</span>
+          </h3>
+          <p>{details.desc}</p>
+          {quantite}
+        	{ajoutPanier}
+        </CardBody>
+      </Card>
       
     )
   }

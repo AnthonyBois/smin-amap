@@ -5,6 +5,9 @@ import Inventory from './Inventory';
 import Veggie from './Veggie';
 import sampleVeggies from '../sample-veggies';
 
+import { Card, CardBody } from 'reactstrap';
+
+
 class App extends React.Component {
 
   constructor() {
@@ -52,10 +55,20 @@ class App extends React.Component {
   }
   
   componentWillMount(){
+
+    if ((typeof JSON.parse(localStorage.getItem('orders')) !== "undefined") 
+      && (JSON.parse(localStorage.getItem('orders')) !== null)){
       this.setState({
         orders: JSON.parse(localStorage.getItem('orders')).orders
       })
-  }
+    } 
+    else {
+      this.setState({
+        orders: {}
+      })
+      
+    }
+}
 
 
   loadSamples() {
@@ -68,18 +81,30 @@ class App extends React.Component {
   render() {
     return (
       <div className="amap">
-        <div className="menu">
-          <Header tagline="Des bons legumes" />
-          <ul className="list-of-veggies">
-          {
-            Object
-              .keys(this.state.veggies)
-              .map(key => <Veggie addOrder={this.addOrder} key={this.state.veggies[key].name} details={this.state.veggies[key]}/>)
-          }
-          </ul>
-        </div>
-        <Order addOrder={this.addOrder} details={this.state.orders}/>
-        <Inventory addVeggie={this.addVeggie} loadSamples={this.loadSamples} />
+        <Card>
+          <CardBody>
+            <div className="menu">
+              <Header tagline="Des bons legumes" />
+              <ul className="list-of-veggies">
+              {
+                Object
+                  .keys(this.state.veggies)
+                  .map(key => <Veggie addOrder={this.addOrder} key={this.state.veggies[key].name} details={this.state.veggies[key]}/>)
+              }
+              </ul>
+            </div>
+          </CardBody>
+        </Card>
+        <Card>
+          <CardBody>
+            <Order addOrder={this.addOrder} details={this.state.orders}/>
+          </CardBody>
+        </Card>
+        <Card>
+          <CardBody>
+            <Inventory addVeggie={this.addVeggie} loadSamples={this.loadSamples} />
+          </CardBody>
+        </Card>
       </div>
     )
   }

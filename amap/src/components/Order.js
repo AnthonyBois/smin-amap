@@ -1,5 +1,6 @@
 import React from 'react';
 import { formatPrice } from '../helpers.js';
+import { Button, ButtonGroup, Card, CardBody} from 'reactstrap';
 
 class Order extends React.Component {
 
@@ -50,7 +51,6 @@ class Order extends React.Component {
 	    	return (
 		    	<div className="order-wrap">
 			        <h2>Caddie</h2>
-			        <ul className="order">
 			        	{
 				            Object
 			              	.keys(this.props.details)
@@ -58,29 +58,32 @@ class Order extends React.Component {
 			              		price = price + that.props.details[key].prixFinal
 			              		
 				              	return(
-				              		<li>
+				              		<Card>
+				              		<CardBody>
 					              		<div>
 					              		    <p>{that.props.details[key].nombreProduits}Kg de <b>{that.props.details[key].name}</b> pour un prix de <b className="price">{formatPrice(that.props.details[key].prixFinal)}</b></p>
-            					            <div>
-            					              	<div onClick={() => that.deleteOrder(that.props.details[key], that.props.details)}>- 1 kg</div>
-                                                <div onClick={() => that.createOrder(that.props.details[key])}>+ 1 kg</div>
-                                            </div>
+            					            <ButtonGroup>
+            					              	<Button color="danger" onClick={() => that.deleteOrder(that.props.details[key], that.props.details)}>- 1 kg</Button>
+                                      <Button color="success" onClick={() => that.createOrder(that.props.details[key])}>+ 1 kg</Button>
+                                  </ButtonGroup>
 					              		</div>
-				              		</li>
+					              		</CardBody>
+				              		</Card>
 				              	)
 				            })
 				        }
-		          		<li>
-		          		{
-				            Object
-			              	.keys(this.props.details)
-			              	.map(function (key){
-			              		nombreProduitTotal = nombreProduitTotal + that.props.details[key].nombreProduits
-			              	})
-			            }
-	            		<strong>Total (TTC) :</strong>{formatPrice(price)}
-		          		</li>
-		        	</ul>
+		          		<Card>
+		          			<CardBody>
+				          		{
+						            Object
+					              	.keys(this.props.details)
+					              	.map(function (key){
+					              		nombreProduitTotal = nombreProduitTotal + that.props.details[key].nombreProduits
+					              	})
+					            }
+			            		<strong>Total (TTC) :</strong>{formatPrice(price)}
+		            		</CardBody>
+		          		</Card>
 	      		</div>
 	    	)
 	    } else {
