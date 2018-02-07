@@ -43,7 +43,7 @@ class Order extends React.Component {
   	}
 
   	render() {
-  		if (typeof this.props.details != "undefined"){
+  		if (typeof this.props.details != "undefined" && this.props.details != 0 ){
   			var that = this;
   			var nombreProduits = 0
   			var nombreProduitTotal = 0

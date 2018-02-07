@@ -18,5 +18,5 @@ export function slugify(text) {
 export function getFunName() {
   const adjectives = ['adorable', 'agressif', 'beau', 'brave', 'confiant', 'chaleureux', 'dangereux', 'egoiste', 'fourbe', 'gentil', 'heureux', 'impartial', 'jovial', 'malicieux', 'placide', 'splendide', 'timide', 'triste', 'vilain'];
   const nouns = ['berdjugin', 'jacquot', 'gwen', 'lestideau', 'mercier', 'fouad', 'canard', 'verdillon', 'collomb', 'gaillard', 'zaza', 'andreacola', 'gremillard'];
-  return `${rando(nouns)} est ${rando(adjectives)}`;
+  return `${rando(nouns)}-est-${rando(adjectives)}`;
 }
